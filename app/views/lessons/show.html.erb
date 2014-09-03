@@ -2,12 +2,14 @@
 <br>
 <h2>Show Lesson <%= @lesson.number %></h2>
 <br>
-<h3>Section <%= @section.number %>: <%= @section.name %>
-<br>
+<h3><a href="/sections/<%= @section.number %>/show">
+        Section <%= @section.number %>: <%= @section.name %></a></h3>
 <h3><%= @lesson.name %></h3>
 <p><%= @lesson.text %></p>
 <br>
 <h4><a href="/lessons/<%= @lesson.number %>/edit">Edit this lesson</a></h4>
+<h4><a href="/sections/new">Create a new section</a></h4>
+<h4><a href="/lessons/new">Create a new lesson</a></h4>
 <% if @lesson.previous != nil %>
 <h4><a href="/lessons/<%= @lesson.previous.number %>/show">Show the previous lesson</h4>
 <% end %>

@@ -44,7 +44,9 @@
   <button style="background-color:red"><a href="/lessons/<%= @lesson.number %>"
         data-confirm="Are you sure you want to delete this lesson?"
         data-method="delete" rel="nofollow">Delete Lesson <%= @lesson.number %></a></button>
-<br>
+<br><br><br>
+<h4><a href="/sections/new">Create a new section</a></h4>
+<h4><a href="/lessons/new">Create a new lesson</a></h4>
 <% if @lesson.previous != nil %>
 <h4><a href="/lessons/<%= @lesson.previous.number %>/show">Show the previous lesson</h4>
 <% end %>

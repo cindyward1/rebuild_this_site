@@ -35,6 +35,9 @@ class SectionsController < ApplicationController
 
   def destroy
     @section = Section.where(:number => params[:number]).take
+    @section.lessons.each do |lesson|
+      lesson.destroy
+    end
     @section.destroy
     redirect_to('/lessons')
   end
