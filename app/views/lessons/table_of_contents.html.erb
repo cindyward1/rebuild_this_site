@@ -1,7 +1,8 @@
+<% content_for(:title, "Table of Contents | Rebuild This Site!") %>
 <h1>Rebuild This Site!</h1>
 <br>
 <h2>Table of Contents</h2>
-<h4>Click on a link to edit or see the details of the lesson</h4>
+<h4>Click on a link to edit or see the details of the section or lesson</h4>
 <ul>
   <% @sections.each do |section| %>
     <li><a href="/sections/<%= section.number %>/show">

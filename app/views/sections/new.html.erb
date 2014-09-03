@@ -1,27 +1,13 @@
+<% content_for(:title, "New Section | Rebuild This Site!") %>
 <h1>Rebuild This Site!</h1>
 <br>
 <h2>Create a New Section</h2>
 
-<ul>
-  <% if @section != nil %>
-    <% if @section.errors.any? %>
-      <h4>Please fix these errors in Sections:</h4>
-      <ul>
-        <% @section.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-    <% end %>
-  <% end %>
-</ul>
+<%= render('layouts/errors', :object => @section) %>
 
 <h3>Enter the following information about the section:</h3>
 <form action="/sections" method="post">
-  <label for="section_number">Section Number&nbsp&nbsp</label>
-  <input id="section_number" name="section[number]" type="number"
-         value="<%= @section.number %>">
-  <br><label for "section_name">Section Name&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-  <input id="section_name" name="section[name]" type="text" size="40"
-         value="<%= @section.name %>">
+  <%= render('form') %>
   <br><button style="background-color:green">Create the Section</button>
 </form>
 <br>

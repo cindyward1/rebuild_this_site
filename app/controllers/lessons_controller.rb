@@ -13,10 +13,12 @@ class LessonsController < ApplicationController
   end
 
   def create
+    @sections = Section.all_number_order
     @section = Section.where(:number => params[:section_number]).take
     params[:lesson][:section_id] = @section.id
     @lesson = Lesson.new(params[:lesson])
     if @lesson.save
+      flash[:notice] = "The lesson was saved to the database"
       redirect_to("/lessons/#{@lesson.number}/show")
     else
       render('lessons/new.html.erb')
@@ -40,6 +42,7 @@ class LessonsController < ApplicationController
     params[:lesson][:section_id] = @section.id
     @lesson = Lesson.where(:number => params[:number]).take
     if @lesson.update(params[:lesson])
+      flash[:notice] = "The lesson was updated in the database"
       redirect_to("/lessons/#{@lesson.number}/show")
     else
       render('lesson/edit.html.erb')
@@ -49,6 +52,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson = Lesson.where(:number => params[:number]).take
     @lesson.destroy
+    flash[:notice] = "The lesson was deleted from the database"
     redirect_to('/lessons')
   end
 

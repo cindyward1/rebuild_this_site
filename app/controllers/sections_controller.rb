@@ -8,6 +8,7 @@ class SectionsController < ApplicationController
   def create
     @section = Section.new(params[:section])
     if @section.save
+      flash[:notice] = "The section was saved to the database"
       redirect_to("/sections/#{@section.number}/show")
     else
       render('sections/new.html.erb')
@@ -27,6 +28,7 @@ class SectionsController < ApplicationController
   def update
     @section = Section.where(:number => params[:number]).take
     if @section.update(params[:section])
+      flash[:notice] = "The section was updated in the database"
       redirect_to("/sections/#{@section.number}/show")
     else
       render('section/edit.html.erb')
@@ -39,6 +41,7 @@ class SectionsController < ApplicationController
       lesson.destroy
     end
     @section.destroy
+    flash[:notice] = "The section was deleted from the database"
     redirect_to('/lessons')
   end
 

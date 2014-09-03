@@ -1,0 +1,18 @@
+  <label for="section_number">Section Number&nbsp&nbsp</label>
+  <select id="section_number" name="section_number">
+    <% if !@sections.empty? %>
+      <% @sections.each do |section| %>
+      <option value="<%= section.number %>">
+        Section <%= section.number %>: <%= section.name %></option>
+      <% end %>
+    <% end %>
+  </select><br>
+  <label for="lesson_number">Lesson Number&nbsp&nbsp&nbsp</label>
+  <input id="lesson_number" name="lesson[number]" type="number" min="1"
+         value="<%= @lesson.number %>">
+  <br><label for "lesson_name">Lesson Name &nbsp&nbsp&nbsp&nbsp&nbsp</label>
+  <input id="lesson_name" name="lesson[name]" type="text" size="40"
+         value="<%= @lesson.name %>">
+  <br><label for="lesson_text">Lesson Text</label>
+  <br><textarea id="lesson_text" name="lesson[text]" cols="49"
+                rows="5"><%= @lesson.text %></textarea>
