@@ -1,0 +1,12 @@
+<h1>Rebuild This Site!</h1>
+<br>
+<h2>Table of Contents</h2>
+<h4>Click on a link to edit or see the details of the lesson</h4>
+<ul>
+  <% @lessons.each do |lesson| %>
+    <li><a href="/lessons/<%= lesson.id %>/edit">
+        <%= lesson.number %>: <%= lesson.name %></a></li>
+  <% end %>
+</ul>
+<br>
+<h4><a href="/lessons/new">Create a new lesson</a></h4>

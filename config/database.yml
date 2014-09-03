@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: rebuild_this_site_dev
+
+test:
+  adapter: postgresql
+  database: rebuild_this_site_test
+

@@ -1,0 +1,27 @@
+<h1>Rebuild This Site!</h1>
+<br>
+<h2>Create a New Lesson</h2>
+
+<ul>
+  <% if @lesson != nil %>
+    <% if @lesson.errors.any? %>
+      <h4>Please fix these errors in Lessons:</h4>
+      <ul>
+        <% @lesson.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+<% end %>
+
+<h3>Enter the following information about the lesson:</h3>
+<form action="/lessons" method="post">
+  <label for="lesson_number">Lesson Number&nbsp&nbsp</label>
+  <input id="lesson_number" name="lesson[number]" type="number">
+  <br><label for "lesson_name">Lesson Name &nbsp&nbsp&nbsp&nbsp&nbsp</label>
+  <input id="lesson_name" name="lesson[name]" type="text" size="40">
+  <br><label for="lesson_text">Lesson Text</label>
+  <br><textarea id="lesson_text" name="lesson[text]" cols="49" rows="5">
+  </textarea>
+  <br><button style="background-color:green">Create the lesson</button>
+</form>
