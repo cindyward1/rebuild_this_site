@@ -1,6 +1,6 @@
 class Lesson < ActiveRecord::Base
 
-  validates :number, :presence => true
+  validates :number, :presence => true, :uniqueness => true
   validates_numericality_of :number, :greater_than_or_equal_to => 1
   validates :name, :presence => true, length: { maximum: 40 }
 

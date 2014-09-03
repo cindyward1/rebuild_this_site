@@ -14,30 +14,35 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(params[:lesson])
     if @lesson.save
-      redirect_to('/lessons/show.html.erb')
+      redirect_to("/lessons/#{@lesson.number}/show")
     else
       render('lessons/new.html.erb')
     end
   end
 
+  def show
+    @lesson = Lesson.where(:number => params[:number]).take
+    render('lessons/show.html.erb')
+  end
+
   def edit
-    @lesson = Lesson.find(params[:id])
-    render('lesson/edit.html.erb')
+    @lesson = Lesson.where(:number => params[:number]).take
+    render('lessons/edit.html.erb')
   end
 
   def update
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.where(:number => params[:number]).take
     if @lesson.update(params[:lesson])
-      redirect_to('/lessons/#{@lesson.id}')
+      redirect_to("/lessons/#{@lesson.number}/show")
     else
       render('lesson/edit.html.erb')
     end
   end
 
   def destroy
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.where(:number => params[:number]).take
     @lesson.destroy
-    redirect_to('/lessons/table_of_contents.html.erb')
+    redirect_to('/lessons')
   end
 
 end

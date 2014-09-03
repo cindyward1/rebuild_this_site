@@ -4,7 +4,7 @@
 <h4>Click on a link to edit or see the details of the lesson</h4>
 <ul>
   <% @lessons.each do |lesson| %>
-    <li><a href="/lessons/<%= lesson.id %>/edit">
+    <li><a href="/lessons/<%= lesson.number %>/show">
         <%= lesson.number %>: <%= lesson.name %></a></li>
   <% end %>
 </ul>

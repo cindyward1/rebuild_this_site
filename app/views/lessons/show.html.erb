@@ -1,0 +1,16 @@
+<h1>Rebuild This Site!</h1>
+<br>
+<h2>Show Lesson <%= @lesson.number %></h2>
+<br>
+<h3><%= @lesson.name %></h3>
+<br>
+<p><%= @lesson.text %></p>
+<br>
+<h4><a href="/lessons/<%= @lesson.number %>/edit">Edit this lesson</a></h4>
+<% if @lesson.previous != nil %>
+<h4><a href="/lessons/<%= @lesson.previous.number %>/show">Show the previous lesson</h4>
+<% end %>
+<% if @lesson.next != nil %>
+<h4><a href="/lessons/<%= @lesson.next.number %>/show">Show the next lesson</h4>
+<% end %>
+<h4><a href="/lessons">Table of contents</a></h4>

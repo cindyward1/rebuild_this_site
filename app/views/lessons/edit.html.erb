@@ -1,6 +1,6 @@
 <h1>Rebuild This Site!</h1>
 <br>
-<h2>Create a New Lesson</h2>
+<h2>Edit Lesson <%= @lesson.number %></h2>
 
 <ul>
   <% if @lesson != nil %>
@@ -15,7 +15,8 @@
 </ul>
 
 <h3>Enter the following information about the lesson:</h3>
-<form action="/lessons" method="post">
+<form action="/lessons/<%= @lesson.number %>" method="post">
+  <input name="_method" type="hidden" value="patch">
   <label for="lesson_number">Lesson Number&nbsp&nbsp</label>
   <input id="lesson_number" name="lesson[number]" type="number"
          value="<%= @lesson.number %>">
@@ -25,7 +26,17 @@
   <br><label for="lesson_text">Lesson Text</label>
   <br><textarea id="lesson_text" name="lesson[text]" cols="49"
                 rows="5"><%= @lesson.text %></textarea>
-  <br><button style="background-color:green">Create the lesson</button>
-</form>
+  <br><button style="background-color:yellow">Update Lesson <%= @lesson.number %></button>
+</form><br>
+  <button style="background-color:red"><a href="/lessons/<%= @lesson.number %>"
+        data-confirm="Are you sure you want to delete this lesson?"
+        data-method="delete" rel="nofollow">Delete Lesson <%= @lesson.number %></a></button>
 <br>
+<% if @lesson.previous != nil %>
+<h4><a href="/lessons/<%= @lesson.previous.number %>/show">Show the previous lesson</h4>
+<% end %>
+<% if @lesson.next != nil %>
+<h4><a href="/lessons/<%= @lesson.next.number %>/show">Show the next lesson</h4>
+<% end %>
 <h4><a href="/lessons">Table of contents</a></h4>
+
