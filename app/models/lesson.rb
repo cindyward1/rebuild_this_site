@@ -1,12 +1,11 @@
 class Lesson < ActiveRecord::Base
+  scope :all_number_order, -> { Lesson.all.order(:number) }
 
+  belongs_to :section
   validates :number, :presence => true, :uniqueness => true
   validates_numericality_of :number, :greater_than_or_equal_to => 1
   validates :name, :presence => true, length: { maximum: 40 }
-
-  def self.all_number_order
-    Lesson.all.order(:number)
-  end
+  validates :section_id, :presence => true
 
   def next
     next_lesson = []

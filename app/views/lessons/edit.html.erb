@@ -17,7 +17,20 @@
 <h3>Enter the following information about the lesson:</h3>
 <form action="/lessons/<%= @lesson.number %>" method="post">
   <input name="_method" type="hidden" value="patch">
-  <label for="lesson_number">Lesson Number&nbsp&nbsp</label>
+  <label for="section_number">Section Number&nbsp&nbsp</label>
+  <select id="section_number" name="section_number">
+    <% if !@sections.empty? %>
+      <% @sections.each do |section| %>
+        <% if section.id == @lesson.section_id %>
+          <option value="<%= section.number %>" selected="selected">
+        <% else %>
+          <option value="<%= section.number %>">
+        <% end %>
+        Section <%= section.number %>: <%= section.name %></option>
+      <% end %>
+    <% end %>
+  </select><br>
+  <label for="lesson_number">Lesson Number&nbsp&nbsp&nbsp</label>
   <input id="lesson_number" name="lesson[number]" type="number"
          value="<%= @lesson.number %>">
   <br><label for "lesson_name">Lesson Name &nbsp&nbsp&nbsp&nbsp&nbsp</label>
@@ -38,5 +51,5 @@
 <% if @lesson.next != nil %>
 <h4><a href="/lessons/<%= @lesson.next.number %>/show">Show the next lesson</h4>
 <% end %>
-<h4><a href="/lessons">Table of contents</a></h4>
+<h4><a href="/lessons">Table of Contents</a></h4>
 

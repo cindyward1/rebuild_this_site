@@ -1,0 +1,23 @@
+<h1>Rebuild This Site!</h1>
+<br>
+<h2>Show Section <%= @section.number %></h2>
+<h3><%= @section.name %>
+<% if @section.lessons.all.empty? %>
+  <h3>There are no lessons in this section</h3>
+<% else %>
+<ul><% @section.lessons.all_number_order.each do |lesson| %>
+          <li><a href="/lessons/<%= lesson.number %>/show">
+            <%= lesson.number %>: <%= lesson.name %></a>
+          </li>
+    <% end %>
+</ul>
+<% end %>
+<br>
+<h4><a href="/sections/<%= @section.number %>/edit">Edit this section</a></h4>
+<% if @section.previous != nil %>
+<h4><a href="/sections/<%= @section.previous.number %>/show">Show the previous section</h4>
+<% end %>
+<% if @section.next != nil %>
+<h4><a href="/sections/<%= @section.next.number %>/show">Show the next section</h4>
+<% end %>
+<h4><a href="/lessons">Table of Contents</a></h4>

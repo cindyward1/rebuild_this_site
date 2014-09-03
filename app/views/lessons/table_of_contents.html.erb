@@ -3,10 +3,17 @@
 <h2>Table of Contents</h2>
 <h4>Click on a link to edit or see the details of the lesson</h4>
 <ul>
-  <% @lessons.each do |lesson| %>
-    <li><a href="/lessons/<%= lesson.number %>/show">
-        <%= lesson.number %>: <%= lesson.name %></a></li>
+  <% @sections.each do |section| %>
+    <li><a href="/sections/<%= section.number %>/show">
+        <%= section.number %>: <%= section.name %></a><br><br>
+        <ul><% section.lessons.all_number_order.each do |lesson| %>
+          <li><a href="/lessons/<%= lesson.number %>/show">
+            <%= lesson.number %>: <%= lesson.name %></a>
+          </li>
+        <% end %></ul>
+    </li><br>
   <% end %>
 </ul>
 <br>
+<h4><a href="/sections/new">Create a new section</a></h4>
 <h4><a href="/lessons/new">Create a new lesson</a></h4>

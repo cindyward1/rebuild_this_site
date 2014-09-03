@@ -16,7 +16,16 @@
 
 <h3>Enter the following information about the lesson:</h3>
 <form action="/lessons" method="post">
-  <label for="lesson_number">Lesson Number&nbsp&nbsp</label>
+  <label for="section_number">Section Number&nbsp&nbsp</label>
+  <select id="section_number" name="section_number">
+    <% if !@sections.empty? %>
+      <% @sections.each do |section| %>
+      <option value="<%= section.number %>">
+        Section <%= section.number %>: <%= section.name %></option>
+      <% end %>
+    <% end %>
+  </select><br>
+  <label for="lesson_number">Lesson Number&nbsp&nbsp&nbsp</label>
   <input id="lesson_number" name="lesson[number]" type="number"
          value="<%= @lesson.number %>">
   <br><label for "lesson_name">Lesson Name &nbsp&nbsp&nbsp&nbsp&nbsp</label>
@@ -25,7 +34,7 @@
   <br><label for="lesson_text">Lesson Text</label>
   <br><textarea id="lesson_text" name="lesson[text]" cols="49"
                 rows="5"><%= @lesson.text %></textarea>
-  <br><button style="background-color:green">Create the lesson</button>
+  <br><button style="background-color:green">Create the Lesson</button>
 </form>
 <br>
-<h4><a href="/lessons">Table of contents</a></h4>
+<h4><a href="/lessons">Table of Contents</a></h4>
