@@ -7,6 +7,7 @@
 
 <h3>Enter the following information about the section:</h3>
 <form action="/sections/<%= @section.number %>" method="post">
+  <input name="_method" type="hidden" value="patch">
   <%= render('form') %>
   <br><button style="background-color:yellow">Update section <%= @section.number %></button>
 </form><br>
